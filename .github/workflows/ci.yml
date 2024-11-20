@@ -1,0 +1,46 @@
+name: CI - React TypeScript Vite
+
+on:
+  push:
+    branches:
+      - main       # Trigger on push to main branch
+      - 'feature/*'  # Trigger on feature branches, if any
+  pull_request:
+    branches:
+      - main       # Trigger on PR to main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest   # Use latest Ubuntu for the environment
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Define the Node.js version to use (adjust as needed)
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # # Step 4: Run linting (optional but recommended for code quality)
+      # - name: Run lint
+      #   run: |
+      #     npm run lint   # Run eslint for linting
+
+      # Step 5: Build the project
+      - name: Build project
+        run: |
+          npm run build   # Run "tsc -b && vite build" to build the project
+
+      # # Step 6: Preview the app (optional, for previewing the build)
+      # - name: Preview build
+      #   run: |
+      #     npm run preview   # Run "vite preview" to test the production build (optional for CI)
+
