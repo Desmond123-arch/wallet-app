@@ -11,7 +11,7 @@ const NextButton: React.FC<Props> = (prop) => {
         <button
             disabled={prop.accepted}
             onClick={prop.function}
-            className="text-[13px] h-[40px] w-auto border border-white bg-white text-[#121113] px-[20px] flex items-center justify-center py-[20px] font-semibold rounded-[40px] disabled:bg-zinc-700 disabled:opacity-50 disabled:cursor-not-allowed bg-white cursor-pointer text-black transition-colors"
+            className="text-[13px] h-[40px] w-auto border border-white bg-white text-[#121113] px-[20px] flex items-center justify-center py-[20px] font-semibold rounded-[40px] disabled:opacity-20 disabled:border-white disabled:cursor-not-allowed cursor-pointer transition-colors"
         >
             {prop.text ?? 'Next Step'}&nbsp;&nbsp;
             <svg

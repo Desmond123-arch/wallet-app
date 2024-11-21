@@ -36,12 +36,12 @@ const GetStarted: React.FC = () => {
     const { pageDispatch } = useContext(PageContext)
 
     useEffect(() => {
-        console.log("i was trigger")
+        console.log('i was trigger')
         const id = setTimeout(() => {
-            setIsLoading(false);
-        }, 3000);
+            setIsLoading(false)
+        }, 3000)
 
-        return () => clearTimeout(id);
+        return () => clearTimeout(id)
     }, [])
 
     const navigateToNextPage = () => {
@@ -74,7 +74,7 @@ const GetStarted: React.FC = () => {
             <div className="flex h-full flex-col w-full p-[30px] md:px-[100px] md:py-[30px]">
                 <ProgressBar step={4} />
                 <div>
-                    <h1 className="font-medium text-[27px] mb-[10px] font-dm-mono">
+                    <h1 className="font-medium text-[26px] mb-[10px] font-dm-mono leading-[34px]">
                         Genuine Check
                     </h1>
                     {isLoading ? <InitialCheck /> : <CheckError />}
