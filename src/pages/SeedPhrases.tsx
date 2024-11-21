@@ -94,7 +94,7 @@ const SeedPhrases: React.FC = () => {
                 </div>
 
                 <form onSubmit={(e) => e.preventDefault()}>
-                    <div className="flex flex-col md:grid md:grid-cols-4 md:gap-x-[5px] gap-[20px] w-full text-white mb-[20px]">
+                    <div className="flex flex-col md:grid md:grid-cols-4 md:gap-x-[5px] gap-[20px] w-full mb-[20px]">
                         {[...Array(activeTab)].map((_, i) => (
                             <input
                                 key={i}
@@ -104,10 +104,10 @@ const SeedPhrases: React.FC = () => {
                                     items-center w-full border px-[10px]
                                     ${
                                         errors[i + 1]
-                                            ? 'border-red-500'
-                                            : 'border-[rgb(51,51,51)]'
+                                            ? 'border-[rgb(242,116,116)] text-[rgb(242,116,116)] shadow-[0_0_2px_rgb(242,116,116)]'
+                                            : 'border-[rgb(51,51,51)] text-white focus-seed-shadow focus:border-[rgb(180,219,237)]'
                                     }
-                                    focus:outline-none focus-seed-shadow focus:border-[rgb(180,219,237)]`}
+                                    focus:outline-none`}
                                 onChange={(e) =>
                                     handleValidatedInputChange(
                                         i + 1,
