@@ -1,8 +1,15 @@
 import React from 'react'
 
-const BackButton: React.FC = () => {
+interface Props {
+    function: () => void
+}
+
+const BackButton: React.FC<Props> = (prop) => {
     return (
-        <button className="text-[13px] h-[40px] w-auto border border-white bg-[#121113] px-[20px] flex items-center justify-center py-[20px] font-semibold rounded-[40px]">
+        <button
+            onClick={prop.function}
+            className="text-[13px] h-[40px] w-auto border border-white bg-[#121113] px-[20px] flex items-center justify-center py-[20px] font-semibold rounded-[40px]"
+        >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

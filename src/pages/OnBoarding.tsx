@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ledger_logo, bg_video } from '../assets'
+import { PageContext } from '../contexts/PageContext'
+import { nextPage } from '../utils/pageUtils'
 
 const OnBoarding: React.FC = () => {
+    const { pageDispatch } = useContext(PageContext)
+
+    const navigateToNextPage = () => {
+        nextPage(pageDispatch)
+    }
+
     return (
         <div className="w-screen font-inter h-screen flex relative">
             <div className="text-white bg-[#121113] p-[40px] flex flex-col items-start max-w-[400px] w-screen">
@@ -21,7 +29,10 @@ const OnBoarding: React.FC = () => {
                     Live.
                 </p>
                 <div className="mt-auto">
-                    <button className="my-[25px] text-[16px] w-full h-[45px] flex items-center justify-center font-semibold rounded-[45px] bg-white text-black">
+                    <button
+                        onClick={navigateToNextPage}
+                        className="my-[25px] text-[16px] w-full h-[45px] flex items-center justify-center font-semibold rounded-[45px] bg-white text-black"
+                    >
                         Get started&nbsp;&nbsp;
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +43,7 @@ const OnBoarding: React.FC = () => {
                             viewBox="0 0 16 16"
                         >
                             <path
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
                             ></path>
                         </svg>
