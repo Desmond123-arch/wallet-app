@@ -1,5 +1,5 @@
 import ledgerLogo from './ledger_logo.svg'
-import bgVideo from './connect.mp4'
+import bgVideo from './getting_started/connect.mp4'
 import gettingStartedVideo from './getting_started/video.mov'
 import ledgerStax from './select_device/ledger_stax.jpg'
 import ledgerNano from './select_device/ledger_nano.jpg'
