@@ -8,7 +8,7 @@ import RecoverWalletModal from '../components/Modals/RecoverWalletModal'
 const SeedPhrases: React.FC = () => {
     const wordList = bip39.wordlists.english
 
-    const [isModalOpen, setIsModalOpen] = useState(true)
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const [activeTab, setActiveTab] = useState<number>(12)
     const [words, setWords] = useState<Record<number, string>>({})
     const [errors, setErrors] = useState<Record<number, boolean>>({})
