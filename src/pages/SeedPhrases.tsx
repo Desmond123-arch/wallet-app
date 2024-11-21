@@ -50,7 +50,7 @@ const SeedPhrases: React.FC = () => {
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
             />
-            <div className="w-full overflow-x-hidden min-h-screen font-inter flex relative bg-[#181a1c] text-white">
+            <div className="w-screen overflow-x-hidden min-h-screen font-inter flex relative bg-[#181a1c] text-white">
                 <div className="hidden min-w-[350px] w-[350px] min-h-screen bg-[#bbb3fa] p-[40px] md:flex flex-col">
                     <div className="flex items-center justify-center w-full h-[40px]">
                         <img
