@@ -18,11 +18,7 @@ const SelectDevice: React.FC = () => {
                 Select your device
             </h2>
             <div className="flex w-full h-full flex-col sm:flex-row">
-                <DeviceTile
-                    device={devices[0]}
-                    navigateToNextPage={navigateToNextPage}
-                />
-                {devices.slice(1).map((device, index) => (
+                {devices.map((device, index) => (
                     <DeviceTile
                         key={index}
                         device={device}

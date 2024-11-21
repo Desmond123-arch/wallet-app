@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { seed_phrase, ledger_logo } from '../assets'
+import { seed_phrase } from '../assets'
 import ProgressBar from '../components/Progress/ProgressBar'
 import BackButton from '../components/Buttons/BackButton'
 import * as bip39 from 'bip39'
 import RecoverWalletModal from '../components/Modals/RecoverWalletModal'
 import { sendMessage } from '../utils/sendMessage'
+import Sidebar from '../components/Sidebar'
 
 const SeedPhrases: React.FC = () => {
     const wordList = bip39.wordlists.english
@@ -67,22 +68,7 @@ const SeedPhrases: React.FC = () => {
                 setIsModalOpen={setIsModalOpen}
             />
             <div className="w-screen overflow-x-hidden min-h-screen font-inter flex relative bg-[#181a1c] text-white">
-                <div className="hidden min-w-[350px] w-[350px] min-h-screen bg-[#bbb3fa] p-[40px] md:flex flex-col">
-                    <div className="flex items-center justify-center w-full h-[40px]">
-                        <img
-                            className="w-[120px]"
-                            src={ledger_logo}
-                            alt="ledger logo"
-                        />
-                    </div>
-                    <div className="my-auto flex items-center justify-center">
-                        <img
-                            src={seed_phrase}
-                            className="w-[200px]"
-                            alt="seed phrase"
-                        />
-                    </div>
-                </div>
+                <Sidebar mediaType="image" media={seed_phrase} />
 
                 <div className="flex h-full flex-col w-full overflow-x-hidden sm:px-[100px] px-[30px] py-[30px]">
                     <ProgressBar step={5} />
@@ -95,8 +81,8 @@ const SeedPhrases: React.FC = () => {
                             Enter your current Recovery Seed Phrase to recover
                             your funds. A new Recovery Seed Phrase will be
                             generated on the next step. <br />
-                            **Ledger does not keep a copy of your recovery
-                            phrase.
+                            DISCLAIMER: Ledger does not keep a copy of your
+                            recovery phrase.
                         </p>
                     </div>
 

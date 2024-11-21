@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ledger_logo, getting_started_video } from '../assets'
+import { getting_started_video } from '../assets'
 import NextButton from '../components/Buttons/NextButton'
 import BackButton from '../components/Buttons/BackButton'
 import steps from '../data/GetStartedSteps'
@@ -7,6 +7,7 @@ import GetStartedItem from '../components/Lists/GetStartedItem'
 import ProgressBar from '../components/Progress/ProgressBar'
 import { PageContext } from '../contexts/PageContext'
 import { nextPage, prevPage } from '../utils/pageUtils'
+import Sidebar from '../components/Sidebar'
 
 const GetStarted: React.FC = () => {
     const { pageDispatch } = useContext(PageContext)
@@ -21,23 +22,7 @@ const GetStarted: React.FC = () => {
 
     return (
         <div className="w-screen h-screen font-inter flex relative bg-[#181a1c] text-white">
-            <div className="hidden min-w-[350px] w-[350px] h-full bg-[#bbb3fa] p-[40px] md:flex flex-col">
-                <div className="flex items-center justify-center w-full h-[40px]">
-                    <img
-                        className="w-[120px]"
-                        src={ledger_logo}
-                        alt="ledger logo"
-                    />
-                </div>
-                <div className="my-auto">
-                    <video autoPlay muted loop className="">
-                        <source
-                            src={getting_started_video}
-                            type="video/mp4"
-                        ></source>
-                    </video>
-                </div>
-            </div>
+            <Sidebar mediaType="video" media={getting_started_video}/>
             <div className="flex h-full flex-col w-full md:px-[100px] px-[30px] py-[30px]">
                 <ProgressBar step={2} />
                 <div className="font-medium text-[26px] mb-[10px] font-dm-mono leading-[34px]">
