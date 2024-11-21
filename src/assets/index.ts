@@ -6,6 +6,7 @@ import ledgerStax from './select_device/ledger_stax.jpg'
 import ledgerNano from './select_device/ledger_nano.jpg'
 import ledgerNanoX from './select_device/ledger_nano_x.jpg'
 import modalLoader from './modal_loader.gif'
+import danger from './danger.svg'
 
 export const ledger_logo = ledgerLogo
 export const seed_phrase = seedPhrase
@@ -15,3 +16,4 @@ export const ledger_stax = ledgerStax
 export const ledger_nano = ledgerNano
 export const ledger_nano_x = ledgerNanoX
 export const modal_loader = modalLoader
+export const danger_img=danger
