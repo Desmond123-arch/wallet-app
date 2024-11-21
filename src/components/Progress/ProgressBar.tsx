@@ -6,7 +6,7 @@ interface Props {
 }
 
 const ProgressBar: React.FC<Props> = ({ step }) => {
-    const progressPercent = 25 * (step - 1)
+    const progressPercent = 33 * (step - 2)
 
     return (
         <div
@@ -14,7 +14,7 @@ const ProgressBar: React.FC<Props> = ({ step }) => {
         >
             <div className="absolute bg-white text-black rounded-[3px] p-[3px] text-[10px] flex items-center font-medium">
                 <span className="rounded-[3px] mr-[5px] w-[17px] h-[17px] bg-black flex items-center justify-center text-white text-[10px]">
-                    {step}
+                    {step - 1}
                 </span>
                 {progress[step - 2]}
             </div>

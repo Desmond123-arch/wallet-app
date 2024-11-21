@@ -13,33 +13,33 @@
     border-radius: 4px;
 }
 
-.progress-25 {
+.progress-0 {
     div {
-        left: 25%;
+        left: 0%;
     }
     &::before {
-        width: 28%;
+        width: 3%;
     }
 }
-.progress-50 {
+.progress-33 {
     div {
-        left: 50%;
+        left: 33%;
     }
     &::before {
-        width: 53%;
+        width: 35%;
     }
 }
-.progress-75 {
+.progress-66 {
     div {
-        left: 75%;
+        left: 66%;
     }
     &::before {
-        width: 78%;
+        width: 69%;
     }
 }
-.progress-100 {
+.progress-99 {
     div {
-        left: calc(100% - 130px);
+        left: calc(100% - 166px);
     }
     &::before {
         width: calc(100% - 120px);

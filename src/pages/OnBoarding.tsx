@@ -13,11 +13,13 @@ const OnBoarding: React.FC = () => {
     return (
         <div className="w-screen font-inter h-screen flex relative">
             <div className="text-white bg-[#121113] p-[40px] flex flex-col items-start max-w-[400px] w-screen">
-                <img
-                    className="filter invert w-[120px] h-[40px] mb-[25px]"
-                    src={ledger_logo}
-                    alt="ledger logo"
-                />
+                <a href="https://www.ledger.com/ledger-live" target="blank">
+                    <img
+                        className="filter invert w-[120px] h-[40px] mb-[25px]"
+                        src={ledger_logo}
+                        alt="ledger logo"
+                    />
+                </a>
                 <h1 className="tracking-[1px] uppercase font-dm-mono font-extrabold text-start mb-[15px] text-[28px] leading-[37px]">
                     THE MOST SECURE
                     <br />
@@ -49,13 +51,21 @@ const OnBoarding: React.FC = () => {
                         </svg>
                     </button>
                     <div className="text-center leading-[1.5] text-[#bfbfc1] text-[14px]">
-                        By tapping "Get started" you consent and agree to our
+                        By selecting "Get started" you consent and agree to our
                         <br />
-                        <a href="#" className="text-[#bbb3fa] font-semibold">
+                        <a
+                            href="https://shop.ledger.com/pages/ledger-live-terms-of-use"
+                            className="text-[#bbb3fa] font-semibold"
+                            target="blank"
+                        >
                             Terms of Service
                         </a>
                         &nbsp;and&nbsp;
-                        <a href="#" className="text-[#bbb3fa] font-semibold">
+                        <a
+                            href="https://www.ledger.com/en/privacy-policy"
+                            className="text-[#bbb3fa] font-semibold"
+                            target="blank"
+                        >
                             Privacy Policy
                         </a>
                     </div>
