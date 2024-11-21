@@ -10,7 +10,17 @@ import { motion } from 'framer-motion'
 import EmptyPage from './components/EmptyPage'
 
 function App() {
-  return (
+    const { page } = useContext(PageContext)
+    const pages = [
+        <OnBoarding />,
+        <SelectDevice />,
+        <GetStarted />,
+        <ConnectLedger />,
+        <GenuineCheck />,
+        <EmptyPage />,
+    ]
+
+    return (
         <div className="w-screen h-screen font-inter flex relative bg-[#181a1c] text-white">
             <motion.div
                 key={page}

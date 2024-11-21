@@ -1,5 +1,10 @@
 import React from 'react'
 
+interface Props {
+    function: () => void
+    text?: string
+}
+
 const NextButton: React.FC<Props> = (prop) => {
     return (
         <button
