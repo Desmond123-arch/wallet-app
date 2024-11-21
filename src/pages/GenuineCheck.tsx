@@ -6,6 +6,7 @@ import ProgressBar from '../components/Progress/ProgressBar'
 import { PageContext } from '../contexts/PageContext'
 import { nextPage, prevPage } from '../utils/pageUtils'
 import NextButton from '../components/Buttons/NextButton'
+import initialVideo from '../assets/initial_vid.gif'
 
 const CheckError = () => {
     return (
@@ -18,10 +19,21 @@ const CheckError = () => {
         </div>
     )
 }
+const InitialCheck = () => {
+    return (                        <div className="pt-[40px] flex items-center flex-col w-full gap-4">
+        <div className='w-1/2'>
+            <img src={initialVideo} alt="inital video" />
+        </div>
+        <ClipLoader size={40} color="#9333ea" />
+        <p className='text-white text-xl'>Running wireless check</p>
+    </div>)
+}
 
 const GetStarted: React.FC = () => {
-    const [isLoading, setIsLoading] = useState('error')
+    const [isLoading] = useState(true);
     const { pageDispatch } = useContext(PageContext)
+
+    
     const navigateToNextPage = () => {
         nextPage(pageDispatch)
     }
@@ -49,16 +61,14 @@ const GetStarted: React.FC = () => {
                     </video>
                 </div>
             </div>
-            <div className="flex h-full flex-col w-full px-[100px] py-[30px]">
+            <div className="flex h-full flex-col w-full p-[30px] md:px-[100px] md:py-[30px]">
                 <ProgressBar step={4} />
                 <div>
                     <h1 className="font-medium text-[27px] mb-[10px] font-dm-mono">
                         Genuine Check
                     </h1>
-                    {isLoading === 'initial' ? (
-                        <div className="">
-                            <ClipLoader size={40} color="#9333ea" />
-                        </div>
+                    {isLoading? (
+                        <InitialCheck/>
                     ) : (
                         <CheckError />
                     )}
@@ -69,6 +79,7 @@ const GetStarted: React.FC = () => {
                     <NextButton
                         text={'Repair & Recover'}
                         function={navigateToNextPage}
+
                     />
                 </div>
             </div>

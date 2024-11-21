@@ -49,7 +49,7 @@ const ConnectLedger: React.FC = () => {
                             wirelessly.
                         </p>
                     </div>
-                    <label className="inline-flex items-center cursor-pointer border border-stone-800 py-3 px-5 rounded-md mt-7">
+                    <label className="inline-flex items-center cursor-pointer border border-stone-800 py-3 px-5 rounded-md mt-7 w-full md:w-[40%]">
                         <input
                             type="checkbox"
                             value=""
@@ -65,7 +65,7 @@ const ConnectLedger: React.FC = () => {
                 <div className="pt-[40px]"></div>
                 <div className="mt-auto flex justify-between w-full">
                     <BackButton function={navigateToPrevPage} />
-                    <NextButton function={navigateToNextPage} />
+                    <NextButton function={navigateToNextPage} accepted={option}/>
                 </div>
             </div>
         </div>

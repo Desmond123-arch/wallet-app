@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { ledger_logo, getting_started_video } from '../assets'
 import NextButton from '../components/Buttons/NextButton'
 import BackButton from '../components/Buttons/BackButton'
