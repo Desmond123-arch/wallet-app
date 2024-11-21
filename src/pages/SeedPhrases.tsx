@@ -109,7 +109,7 @@ const SeedPhrases: React.FC = () => {
                     )}
 
                     <div className="my-[30px] flex justify-between gap-[20px]">
-                        {[1, 18, 24].map((num, index) => (
+                        {[12, 18, 24].map((num, index) => (
                             <button
                                 key={index}
                                 onClick={() => handleTabChange(num)}
