@@ -1,5 +1,5 @@
 import React from 'react'
-import { ledger_logo, getting_started_video } from '../assets'
+import { ledger_logo, getting_started_video, danger_img } from '../assets'
 import NextButton from '../components/Buttons/NextButton'
 import BackButton from '../components/Buttons/BackButton'
 
@@ -32,32 +32,18 @@ const GetStarted: React.FC = () => {
                         GET STARTED
                     </div>
                 </div>
-                <div className="font-medium text-[26px] mb-[10px] font-dm-mono">
-                    <h2>THE BEST WAY TO GET YOU STARTED:</h2>
+                <div>
+                    <h1 className="font-medium text-[27px] mb-[10px] font-dm-mono">
+                        Genuine Check
+                    </h1>
+                    <div className='mt-10'>
+                        <img src={danger_img} alt="danger"/>
+                    </div>
                 </div>
-                <div className="pt-[40px]">
-                    <ul className="flex flex-col gap-[20px]">
-                        {Array.from({ length: 4 }).map((_elem, index) => (
-                            <li key={index} className="flex items-center">
-                                <span className="flex items-center justify-center rounded-[5px] border-[#333] border-[1px] min-w-[60px] h-[60px]">
-                                    {index + 1}
-                                </span>
-                                <div className="pl-[10px] flex flex-col gap-[5px]">
-                                    <strong className="text-[14px]">
-                                        Turn on Device
-                                    </strong>
-                                    <p className="text-[13px] text-[#bfbfc1]">
-                                        Connect your device to your computer
-                                        with the USB cable.
-                                    </p>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                <div className="pt-[40px]"></div>
                 <div className="mt-auto flex justify-between w-full">
                     <BackButton />
-                    <NextButton option={true}/>
+                    <NextButton option={true} />
                 </div>
             </div>
         </div>

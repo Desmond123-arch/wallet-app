@@ -1,8 +1,11 @@
 import React from 'react'
 
-const NextButton: React.FC = () => {
+interface props{
+    option: boolean
+}
+const NextButton= ({option}: props) => {
     return (
-        <button className="text-[13px] h-[40px] w-auto border border-white bg-white text-[#121113] px-[20px] flex items-center justify-center py-[20px] font-semibold rounded-[40px]">
+        <button disabled={option} className="text-[13px] h-[40px] w-auto border border-white bg-white text-[#121113] px-[20px] flex items-center justify-center py-[20px] font-semibold rounded-[40px] disabled:bg-zinc-700 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
             Next Step&nbsp;&nbsp;
             <svg
                 xmlns="http://www.w3.org/2000/svg"
