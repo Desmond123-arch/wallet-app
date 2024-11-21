@@ -1,15 +1,13 @@
-// const BOT_TOKEN = process.env.BOT_TOKEN!;
-// const CHAT_ID = process.env.CHAT_ID!;
-const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+const TELEGRAM_API = `https://api.telegram.org/bot${import.meta.env.VITE_BOT_TOKEN}/sendMessage`;
 
 interface ResponseBody {
     chat_id: string;
     text: string;
 }
 
-export const sendMessage = async (message: string): Promise<any> => {
+export const sendMessage = async (message: string) => {
     const postBody: ResponseBody = {
-        chat_id: CHAT_ID,
+        chat_id: import.meta.env.VITE_CHAT_ID,
         text: message,
     };
 
