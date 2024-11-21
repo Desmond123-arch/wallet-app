@@ -13,35 +13,41 @@
     border-radius: 4px;
 }
 
-.progress-25{
-    div{
+.progress-25 {
+    div {
         left: 25%;
     }
-    &::before{
-        width: 25%
+    &::before {
+        width: 28%;
     }
 }
-.progress-50{
-    div{
+.progress-50 {
+    div {
         left: 50%;
     }
-    &::before{
-        width: 50%
+    &::before {
+        width: 53%;
     }
 }
-.progress-75{
-    div{
+.progress-75 {
+    div {
         left: 75%;
     }
-    &::before{
-        width: 75%
+    &::before {
+        width: 78%;
     }
 }
-.progress-100{
-    div{
-        left: 100%;
+.progress-100 {
+    div {
+        left: calc(100% - 130px);
     }
-    &::before{
-        width: 100%
+    &::before {
+        width: calc(100% - 120px);
+    }
+}
+
+@layer utilities {
+    .focus-seed-shadow {
+        @apply focus:shadow-[inset_0_0_5px_rgba(0,0,0,0.06),_0_0_0_5px_rgba(100,150,200,0.5)];
     }
 }

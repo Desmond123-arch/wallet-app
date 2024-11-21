@@ -5,7 +5,7 @@ import OnBoarding from './pages/OnBoarding'
 import SelectDevice from './pages/SelectDevice'
 import { PageContext } from './contexts/PageContext'
 import { motion } from 'framer-motion'
-import EmptyPage from './components/EmptyPage'
+import SeedPhrases from './pages/SeedPhrases'
 
 function App() {
     const { page } = useContext(PageContext)
@@ -13,11 +13,11 @@ function App() {
         <OnBoarding />,
         <SelectDevice />,
         <GetStarted />,
-        <EmptyPage />,
+        <SeedPhrases />,
     ]
 
     return (
-        <div className="w-screen h-screen font-inter flex relative bg-[#181a1c] text-white">
+        <div className="w-screen h-[full] font-inter flex relative bg-[#181a1c] text-white">
             <motion.div
                 key={page}
                 initial={{ x: '100%' }}

@@ -38,7 +38,7 @@ const GetStarted: React.FC = () => {
                     </video>
                 </div>
             </div>
-            <div className="flex h-full flex-col w-full md:px[100px] px-[30px] py-[30px]">
+            <div className="flex h-full flex-col w-full md:px-[100px] px-[30px] py-[30px]">
                 <ProgressBar step={2} />
                 <div className="font-medium text-[26px] mb-[10px] font-dm-mono leading-[34px]">
                     <h2>THE BEST WAY TO GET YOU STARTED:</h2>
