@@ -4,12 +4,31 @@ import GetStarted from './pages/GetStarted'
 import OnBoarding from './pages/OnBoarding'
 import SelectDevice from './pages/SelectDevice'
 import { PageContext } from './contexts/PageContext'
+import { motion } from 'framer-motion'
+import EmptyPage from './components/EmptyPage'
 
 function App() {
     const { page } = useContext(PageContext)
-    const pages = [<OnBoarding />, <SelectDevice />, <GetStarted />]
+    const pages = [
+        <OnBoarding />,
+        <SelectDevice />,
+        <GetStarted />,
+        <EmptyPage />,
+    ]
 
-    return <>{pages[page]}</>
+    return (
+        <div className="w-screen h-screen font-inter flex relative bg-[#181a1c] text-white">
+            <motion.div
+                key={page}
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ type: 'tween', duration: 0.5 }}
+            >
+                {pages[page]}
+            </motion.div>
+        </div>
+    )
 }
 
 export default App
