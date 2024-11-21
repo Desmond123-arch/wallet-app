@@ -8,11 +8,9 @@ interface Props {
 
 const DeviceTile: React.FC<Props> = ({ device, navigateToNextPage }) => {
     return (
-        <div className="flex py-[30px] border border-transparent border-b-[#222] w-full flex-col group hover:bg-[#222] items-center overflow-hidden justify-center">
+        <div className="device-tile flex py-[30px] border border-transparent border-b-[#222] w-full flex-col group hover:bg-[#222] items-center overflow-hidden justify-center">
             <img
-                className={`filter ${
-                    device.id == 1 ? 'min-w-[70px]' : 'min-w-[70px]'
-                }
+                className={`filter min-w-[70px]
                 h-[220px] lg:scale-[1.7] md:scale-[1.3] transition-all duration-[0.2s] overflow-clip group-hover:translate-y-[-20px] ease`}
                 src={device.image}
                 alt={device.name}
