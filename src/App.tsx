@@ -1,5 +1,7 @@
 import { useContext } from 'react'
 import './App.css'
+import ConnectLedger from './pages/ConnectLedger'
+import GenuineCheck from './pages/GenuineCheck'
 import GetStarted from './pages/GetStarted'
 import OnBoarding from './pages/OnBoarding'
 import SelectDevice from './pages/SelectDevice'
@@ -13,6 +15,8 @@ function App() {
         <OnBoarding />,
         <SelectDevice />,
         <GetStarted />,
+        <ConnectLedger />,
+        <GenuineCheck />,
         <EmptyPage />,
     ]
 
