@@ -1,4 +1,5 @@
 interface Device{
+    id: number
     name: string
     image: string
 }

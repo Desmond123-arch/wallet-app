@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ledger_logo, getting_started_video } from '../assets'
 import NextButton from '../components/Buttons/NextButton'
 import BackButton from '../components/Buttons/BackButton'
+import steps from '../data/GetStartedSteps'
+import GetStartedItem from '../components/Lists/GetStartedItem'
+import ProgressBar from '../components/Progress/ProgressBar'
+import { PageContext } from '../contexts/PageContext'
+import { nextPage, prevPage } from '../utils/pageUtils'
 
 const GetStarted: React.FC = () => {
+    const { pageDispatch } = useContext(PageContext)
+
+    const navigateToNextPage = () => {
+        nextPage(pageDispatch)
+    }
+
+    const navigateToPrevPage = () => {
+        prevPage(pageDispatch)
+    }
+
     return (
         <div className="w-screen h-screen font-inter flex relative bg-[#181a1c] text-white">
-            <div className="hidden w-[350px] h-full bg-[#bbb3fa] p-[40px] md:flex flex-col">
+            <div className="hidden min-w-[350px] w-[350px] h-full bg-[#bbb3fa] p-[40px] md:flex flex-col">
                 <div className="flex items-center justify-center w-full h-[40px]">
                     <img
                         className="w-[120px]"
@@ -24,40 +39,24 @@ const GetStarted: React.FC = () => {
                 </div>
             </div>
             <div className="flex h-full flex-col w-full px-[100px] py-[30px]">
-                <div className="w-full bg-white h-[4px] mb-[40px] relative rounded-[4px]">
-                    <div className="absolute bg-white text-black rounded-[3px] p-[3px] text-[10px] flex items-center font-medium">
-                        <span className="rounded-[3px] w-[17px] h-[17px] bg-black flex items-center justify-center text-white text-[10px]">
-                            2
-                        </span>
-                        GET STARTED
-                    </div>
-                </div>
-                <div className="font-medium text-[26px] mb-[10px] font-dm-mono">
+                <ProgressBar step={2} />
+                <div className="font-medium text-[26px] mb-[10px] font-dm-mono leading-[34px]">
                     <h2>THE BEST WAY TO GET YOU STARTED:</h2>
                 </div>
                 <div className="pt-[40px]">
                     <ul className="flex flex-col gap-[20px]">
-                        {Array.from({ length: 4 }).map((_elem, index) => (
-                            <li key={index} className="flex items-center">
-                                <span className="flex items-center justify-center rounded-[5px] border-[#333] border-[1px] min-w-[60px] h-[60px]">
-                                    {index + 1}
-                                </span>
-                                <div className="pl-[10px] flex flex-col gap-[5px]">
-                                    <strong className="text-[14px]">
-                                        Turn on Device
-                                    </strong>
-                                    <p className="text-[13px] text-[#bfbfc1]">
-                                        Connect your device to your computer
-                                        with the USB cable.
-                                    </p>
-                                </div>
-                            </li>
+                        {steps.map((step, index) => (
+                            <GetStartedItem
+                                key={index}
+                                index={index}
+                                step={step}
+                            />
                         ))}
                     </ul>
                 </div>
                 <div className="mt-auto flex justify-between w-full">
-                    <BackButton />
-                    <NextButton option={true}/>
+                    <BackButton function={navigateToPrevPage}  />
+                    <NextButton function={navigateToNextPage} />
                 </div>
             </div>
         </div>
