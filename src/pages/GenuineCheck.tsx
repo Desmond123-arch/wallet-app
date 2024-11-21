@@ -22,7 +22,6 @@ const CheckError = () => {
 const GetStarted: React.FC = () => {
     const [isLoading, setIsLoading] = useState('error')
     const { pageDispatch } = useContext(PageContext)
-
     const navigateToNextPage = () => {
         nextPage(pageDispatch)
     }
