@@ -1,5 +1,6 @@
 import React from 'react'
 import { modal_loader } from '../../assets'
+import FallingBlocks from '../Animations/FallingBlocks'
 
 interface Props {
     setIsModalOpen: (val: boolean) => void
@@ -15,15 +16,15 @@ const RecoverWalletModal: React.FC<Props> = ({
     }
 
     return (
-        <div className={`${isModalOpen ? "flex" : "hidden"}`}>
-            <div className="fixed w-screen h-screen overflow-hidden z-10 bg-black opacity-50"></div>
+        <div className={`${isModalOpen ? 'flex' : 'hidden'}`}>
+            <div className="fixed w-screen h-screen overflow-hidden z-10 bg-black opacity-80"></div>
             <div className="flex items-center justify-center w-screen h-screen absolute">
                 <div
                     className={`${
                         isModalOpen ? 'modal-content' : 'modal-content hidden'
                     } fixed z-20 bg-white border border-[rgb(136,136,136)] max-w-[350px]`}
                 >
-                    <div className="bg-white h-[70px] flex items-start justify-end">
+                    <div className="bg-white h-[70px] px-[16px] py-[2px] flex items-start justify-end">
                         <span
                             id="closeBtn"
                             className="close"
@@ -51,44 +52,22 @@ const RecoverWalletModal: React.FC<Props> = ({
                         </span>
                     </div>
 
-                    <div
-                        className="modal-body"
-                        style={{ marginTop: '20%', marginBottom: '0%' }}
-                    >
-                        <div
-                            data-v-2756568a=""
-                            data-v-1c530256=""
-                            role="group"
-                            aria-labelledby="eligstatement"
-                        >
-                            <center
-                                style={{
-                                    marginTop: '10%',
-                                    marginBottom: '60px',
-                                }}
-                            >
-                                <div className="loader-square-10"></div>
-                                <h1
-                                    style={{
-                                        fontSize: '20px',
-                                        marginTop: '20px',
-                                        textAlign: 'center',
-                                        fontWeight: 800,
-                                        color: 'black',
-                                    }}
-                                    className="RetailTitle_retailTitle__2DUse LayoutTitle_afterTitles__3Htoa"
-                                >
+                    <div className="py-[2px] px-[16px]">
+                        <div role="group" aria-labelledby="eligstatement">
+                            <center className="mt-[10%] mb-[60px]">
+                                <FallingBlocks />
+                                <h1 className="text-[20px] mt-[20px] text-center font-extrabold text-black">
                                     Recovering Wallet
                                 </h1>
                                 <br />
-                                <p style={{ color: 'black' }}>
+                                <p className="text-black text-[14px]">
                                     Trying to recover your wallet... this may
                                     take a few minutes
                                 </p>
-                                <div className="center-body">
+                                <div>
                                     <img
                                         id="video_help"
-                                        style={{ width: '50px' }}
+                                        className="w-[50px]"
                                         src={modal_loader}
                                         alt="Loading"
                                     />

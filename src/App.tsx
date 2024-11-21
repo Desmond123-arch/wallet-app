@@ -25,7 +25,7 @@ function App() {
                 exit={{ x: '100%' }}
                 transition={{ type: 'tween', duration: 0.5 }}
             >
-                {pages[3]}
+                {pages[page]}
             </motion.div>
         </div>
     )
