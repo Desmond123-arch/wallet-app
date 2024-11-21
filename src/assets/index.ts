@@ -1,7 +1,7 @@
 import ledgerLogo from './ledger_logo.svg'
 import seedPhrase from './seed_phrase.jpg'
-import bgVideo from './getting_started/connect.mp4'
-import gettingStartedVideo from './getting_started/video.mov'
+import bgVideo from './getting_started/Connect.mp4'
+import gettingStartedVideo from './getting_started/Video.mp4'
 import ledgerStax from './select_device/ledger_stax.webp'
 import ledgerFlex from './select_device/ledger_flex.webp'
 import ledgerNanoS from './select_device/ledger_nano_s.webp'
@@ -21,5 +21,5 @@ export const ledger_nano_s = ledgerNanoSPlus
 export const ledger_nano_s_plus = ledgerNanoS
 export const ledger_nano_x = ledgerNanoX
 export const modal_loader = modalLoader
-export const danger_img=danger
+export const danger_img = danger
 export const connect = connectImage
