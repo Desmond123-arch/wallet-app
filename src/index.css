@@ -51,3 +51,13 @@
         @apply focus:shadow-[inset_0_1px_1px_rgba(0,0,0,0.06),_0_0_0_3px_rgba(100,150,200,0.5)];
     }
 }
+
+@media (max-height: 800px) {
+    .devices-title{
+        top: 50px;
+    }
+    .device-tile {
+        justify-content: end;
+        padding-bottom: 10px;
+    }
+}

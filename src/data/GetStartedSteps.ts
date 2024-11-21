@@ -14,7 +14,7 @@ const steps: Array<Step> = [
         description: 'Press both buttons simultaneously to validate the selection.',
     },
     {
-        title: 'Keep Your Recovery Phrase',
+        title: 'Genuine Check',
         description: 'Click on NEXT - Follow instructions on your Device.',
     }
 ]
