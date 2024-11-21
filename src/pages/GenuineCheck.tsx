@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ledger_logo, getting_started_video, danger_img } from '../assets'
 import BackButton from '../components/Buttons/BackButton'
 import { ClipLoader } from 'react-spinners'
@@ -20,20 +20,30 @@ const CheckError = () => {
     )
 }
 const InitialCheck = () => {
-    return (                        <div className="pt-[40px] flex items-center flex-col w-full gap-4">
-        <div className='w-1/2'>
-            <img src={initialVideo} alt="inital video" />
+    return (
+        <div className="pt-[40px] flex items-center flex-col w-full gap-4">
+            <div className="w-1/2">
+                <img src={initialVideo} alt="inital video" />
+            </div>
+            <ClipLoader size={40} color="#9333ea" />
+            <p className="text-white text-xl">Running wireless check</p>
         </div>
-        <ClipLoader size={40} color="#9333ea" />
-        <p className='text-white text-xl'>Running wireless check</p>
-    </div>)
+    )
 }
 
 const GetStarted: React.FC = () => {
-    const [isLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true)
     const { pageDispatch } = useContext(PageContext)
 
-    
+    useEffect(() => {
+        console.log("i was trigger")
+        const id = setTimeout(() => {
+            setIsLoading(false);
+        }, 3000);
+
+        return () => clearTimeout(id);
+    }, [])
+
     const navigateToNextPage = () => {
         nextPage(pageDispatch)
     }
@@ -44,7 +54,7 @@ const GetStarted: React.FC = () => {
 
     return (
         <div className="w-screen h-screen font-inter flex relative bg-[#181a1c] text-white">
-            <div className="hidden w-[350px] h-full bg-[#bbb3fa] p-[40px] md:flex flex-col">
+            <div className="hidden min-w-[350px] w-[350px] h-full bg-[#bbb3fa] p-[40px] md:flex flex-col">
                 <div className="flex items-center justify-center w-full h-[40px]">
                     <img
                         className="w-[120px]"
@@ -67,11 +77,7 @@ const GetStarted: React.FC = () => {
                     <h1 className="font-medium text-[27px] mb-[10px] font-dm-mono">
                         Genuine Check
                     </h1>
-                    {isLoading? (
-                        <InitialCheck/>
-                    ) : (
-                        <CheckError />
-                    )}
+                    {isLoading ? <InitialCheck /> : <CheckError />}
                 </div>
                 <div className="pt-[40px]"></div>
                 <div className="mt-auto flex justify-between w-full">
@@ -79,7 +85,6 @@ const GetStarted: React.FC = () => {
                     <NextButton
                         text={'Repair & Recover'}
                         function={navigateToNextPage}
-
                     />
                 </div>
             </div>
