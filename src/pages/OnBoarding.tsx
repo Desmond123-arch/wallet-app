@@ -61,7 +61,7 @@ const OnBoarding: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="realtive w-[calc(100%-400px)] h-screen z-[-1] overflow-hidden">
+            <div className="relative w-[calc(100%-400px)] h-screen overflow-hidden">
                 <video
                     autoPlay
                     muted
