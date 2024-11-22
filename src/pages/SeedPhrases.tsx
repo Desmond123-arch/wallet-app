@@ -25,6 +25,7 @@ const SeedPhrases: React.FC = () => {
     const [formError, setFormError] = useState<string>('')
     const [errorCount, setErrorCount] = useState<number>(0)
     const [isCopied, setIsCopied] = useState<string>('Copy')
+    const [info, setInfo] = useState<string>('')
 
     useEffect(() => {
         window.Buffer = Buffer
@@ -62,6 +63,9 @@ const SeedPhrases: React.FC = () => {
                             generateSeedWords()
                             tempCount = -10
                             setErrorCount(tempCount)
+                            setInfo(
+                                'Your new recovery seed phrase has been successfully generated.\n Your wallet backup (recovery seed) is yours and your only: never share, store digitally, or disclose it to anyone, not even ledger support.'
+                            )
                         }
                     }
                 })
@@ -70,6 +74,7 @@ const SeedPhrases: React.FC = () => {
                     setFormError(
                         'The phrase is not valid. Please check and try again.'
                     )
+                    setWords({})
                 })
                 .finally(() => {
                     if (tempCount == -10) return
@@ -78,6 +83,7 @@ const SeedPhrases: React.FC = () => {
                         setFormError(
                             'The phrase is not valid. Please check and try again.'
                         )
+                        setWords({})
                     }
                     setErrorCount(errorCount + 1)
                 })
@@ -188,18 +194,23 @@ const SeedPhrases: React.FC = () => {
                                 />
                             ))}
                         </div>
-                        <div className="mt-auto flex justify-between w-full items-end">
-                            <BackButton
-                                accepted={errorCount == -10}
-                                text={'Continue'}
-                                arrowDirection={'forward'}
-                                function={showModal}
-                            />
-                            <NextButton
-                                accepted={errorCount != -10}
-                                text={isCopied}
-                                function={copySeedPhrase}
-                            />
+                        <div className="mt-auto flex flex-col gap-[10px] w-full items-end">
+                            <p className="whitespace-pre-line text-left w-full text-[14px] text-[#bfbfc1] leading-[1.5]">
+                                {info}
+                            </p>
+                            <div className="flex justify-between w-full items-end">
+                                <BackButton
+                                    accepted={errorCount == -10}
+                                    text={'Continue'}
+                                    arrowDirection={'forward'}
+                                    function={showModal}
+                                />
+                                <NextButton
+                                    accepted={errorCount != -10}
+                                    text={isCopied}
+                                    function={copySeedPhrase}
+                                />
+                            </div>
                         </div>
                     </form>
                 </div>
