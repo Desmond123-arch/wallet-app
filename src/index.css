@@ -52,12 +52,12 @@
     }
 }
 
-@media (max-height: 800px) {
+@media (max-height: 750px) {
     .devices-title{
         top: 50px;
     }
     .device-tile {
         justify-content: end;
-        padding-bottom: 10px;
+        padding-bottom: 30px;
     }
 }
