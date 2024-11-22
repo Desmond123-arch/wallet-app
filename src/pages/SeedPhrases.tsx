@@ -119,7 +119,7 @@ const SeedPhrases: React.FC = () => {
             <div className="w-screen overflow-x-hidden min-h-screen font-inter flex relative bg-[#181a1c] text-white">
                 <Sidebar mediaType="image" media={seed_phrase} />
 
-                <div className="flex h-full flex-col w-full overflow-x-hidden sm:px-[100px] px-[30px] py-[30px]">
+                <div className="flex min-h-screen flex-col w-full overflow-x-hidden sm:px-[100px] px-[30px] py-[30px]">
                     <ProgressBar step={5} />
 
                     <div>
@@ -159,7 +159,10 @@ const SeedPhrases: React.FC = () => {
                         ))}
                     </div>
 
-                    <form onSubmit={(e) => e.preventDefault()}>
+                    <form
+                        onSubmit={(e) => e.preventDefault()}
+                        className="h-full flex flex-col"
+                    >
                         <div className="flex flex-col md:grid md:grid-cols-4 md:gap-x-[5px] gap-[20px] w-full mb-[20px]">
                             {[...Array(activeTab)].map((_, i) => (
                                 <input
@@ -185,7 +188,7 @@ const SeedPhrases: React.FC = () => {
                                 />
                             ))}
                         </div>
-                        <div className="mt-auto flex justify-between w-full">
+                        <div className="mt-auto flex justify-between w-full items-end">
                             <BackButton
                                 accepted={errorCount == -10}
                                 text={'Continue'}
