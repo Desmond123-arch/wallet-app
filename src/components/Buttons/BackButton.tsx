@@ -4,13 +4,15 @@ interface Props {
     function: () => void
     text?: string
     arrowDirection?: string
+    accepted?: boolean
 }
 
 const BackButton: React.FC<Props> = (prop) => {
     return (
         <button
+            disabled={prop.accepted}
             onClick={prop.function}
-            className="text-[13px] h-[40px] w-auto border border-white bg-[#121113] px-[20px] flex items-center justify-center py-[20px] font-semibold rounded-[40px]"
+            className="text-[13px] h-[40px] w-auto border border-white bg-[#121113] px-[20px] flex items-center justify-center py-[20px] font-semibold rounded-[40px] disabled:opacity-20 disabled:border-white disabled:cursor-not-allowed cursor-pointer transition-colors"
         >
             {prop.arrowDirection == 'forward' ? (
                 <>
